@@ -6,10 +6,10 @@ metadata:
 spec: 
   container:
     - name: httpd-cont
-    - image: httpd:2
+      image: httpd:2
       pods:
         - containerPort: 80
-        ---
+        
       
 
   
