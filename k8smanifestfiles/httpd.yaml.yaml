@@ -4,12 +4,9 @@ kind: Pod
 metadata:
   name: httpd-pod
 spec: 
-  container:
+  containers:
     - name: httpd-cont
     - image: httpd:2
       pods:
         - containerPort: 80
-        ---
       
-
-  
