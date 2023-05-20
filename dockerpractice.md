@@ -4,18 +4,17 @@
 * <apk --update upgrade>
 * <apk add python3>
 * <python3 --version>
-![preview](./Images/docker1.png.png
-)
+![preview](./Images/docker1.png.png)
 * By using dockerfile
-* create a dockerfile with 
----
+* create a dockerfile with
+* ---
 * FROM alpine:latest
-* LABEL author="hema" organization="hs"docker container exec -it postdata /bin/bash
-* RUN apk --update upgrade
-* RUN apk add python3
-* CMD ["python3 --version"]
----
-![preview](./Images/docker2.png.png)
+  LABEL author="hema" organization="hs"docker container exec -it postdata /bin/bash
+  RUN apk --update upgrade
+  RUN apk add python3
+  CMD ["python3 --version"]
+* ---
+* ![preview](./Images/docker2.png.png)
 * Then build the image
 * <docker image build -t "python" .>
 * check for the version
@@ -26,11 +25,11 @@
 * <apt update && apt upgrade -y>
 * <apt install python3>
 * <python3 --version>
-![preview](./Images/docker3.png.png)
-![preview](./Images/docker4.png)
-![preview](./Images/docker5.png)
-### Create a postgres container with username panoramic and password as trekking. Try logging in and show the databases (query for psql)
-![preview](./Images/docker6.png)
+* ![preview](./Images/docker3.png.png)
+* ![preview](./Images/docker4.png)
+* ![preview](./Images/docker5.png)
+* ### Create a postgres container with username panoramic and password as trekking. Try logging in and show the databases (query for psql)
+* ![preview](./Images/docker6.png)
 
 * ### Try to create a docker file which runs php info page, use ARG and ENV wherever appropriate on Apache & nginx
 * Apache
@@ -45,12 +44,12 @@ EXPOSE 80
 CMD ["apache2ctl","-D","FOREGROUND"]>
 * <docker image build -t apache .>
 * < docker container run -d --name php -P apache>
-![preview](./Images/docker7.png)
-![preview](./Images/docker9.png)
+* ![preview](./Images/docker7.png)
+* ![preview](./Images/docker9.png)
 * after opening apache default page enter '/info.php'in the apache url
-![preview](./Images/docker8.png)
+* ![preview](./Images/docker8.png)
 
-### Create a Jenkins image by creating an own docker file
+* ### Create a Jenkins image by creating an own docker file
 * refer here for jenkins docs.
 * <https://www.jenkins.io/doc/book/installing/linux/>
 * dockerfile
@@ -67,10 +66,7 @@ RUN apt-get install jenkins -y
 EXPOSE 8080
 CMD ["/usr/bin/jenkins"]>
 * <docker image build -t jenkins .>
-![preview](./Images/docker10.png)
+* ![preview](./Images/docker10.png)
 * <docker conatainer run -d --name hema -P jenkins>
-* [preview](./Images/docker11.png)
-* [preview](./Images/docker12.png)
-
-
-
+* ![preview](./Images/docker11.png)
+* ![preview](./Images/docker12.png)
