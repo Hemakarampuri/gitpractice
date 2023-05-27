@@ -70,3 +70,42 @@ CMD ["/usr/bin/jenkins"]>
 * <docker conatainer run -d --name hema -P jenkins>
 * ![preview](./Images/docker11.png)
 * ![preview](./Images/docker12.png)
+* ### Create nop commerce and MySQL server and try to make them work by configuring
+* <FROM mcr.microsoft.com/dotnet/sdk:7.0
+LABEL author="hema" organization="hs" project="hemainfra"
+ADD https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.2/nopCommerce_4.60.2_NoSource_linux_x64.zip /nop/nopCommerce_4.60.2_NoSource_linux_x64.zip
+WORKDIR /nop
+RUN apt update && apt install unzip -y && \
+    unzip /nop/nopCommerce_4.60.2_NoSource_linux_x64.zip && \
+    mkdir /nop/bin && mkdir /nop/logs
+EXPOSE 5000
+CMD [ "dotnet", "Nop.Web.dll","--urls", "http://0.0.0.0:5000" ]>
+* <docker image build -t hema .>
+* ![preview](./Images/docker13.png)
+* <docker container run -d --name hema2 -P hema>
+* ![preview](./Images/docker14.png)
+* ![preview](./Images/docker15.png)
+* create a network bridge for mysql
+* < docker network create -d bridge --subnet 10.0.0.0/24 mysqlnetwork>
+* ![preview](./Images/docker17.png)
+* <docker volume create myvol>
+* <docker container run -d --name mysqldb -v myvol:/var/lib/mysql -P -e MYSQL_ROOT_PASSWORD=rootroot -e MYSQL_DATABASE=hyd -e MYSQL_USER=devops -e MYSQL_PASSWORD=rootroot --network mysqlnetwork mysql:8>
+* ![preview](./Images/docker18.png)
+
+
+
+
+### write a Docker file for NodeJS application – expressjs
+* dockerfile for nodejs application 
+* <FROM node:8
+  2 LABEL author="hema" organization="hs"
+  3 RUN npm install
+  4 WORKDIR /usr/src/app
+  5 CMD ["npm","start"]
+  6 EXPOSE 30000>
+* to build the image
+* <docker image build -t nodes/node-web-app .>
+* [preview](./Images/docker19.png)
+* to create the container
+* <docker container run -d --name karampuri5 -P node sleep 1d>
+* [preview](./Images/docker20.png)
