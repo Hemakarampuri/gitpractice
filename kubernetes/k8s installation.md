@@ -65,8 +65,9 @@ kubectl:the command line until you talk to your cluster.
 * Install flanell:-flannel is an overlay network provider that can be used with kubernetes
 * <kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml>
 
-* execute the below command as a root user & run kubeadm join commands in the node to connect to master node
+* execute the below command as a root user & run kubeadm join commands in the node to connect to master node(need to pass crisocket)
 * <kubeadm join 172.31.30.147:6443 --token vhng3g.80ar2wxm8hjb84hu \
   --cri-socket "unix:///var/run/cri-dockerd.sock" \
 --discovery-token-ca-cert-hash sha256:aff8046ad5bf2d274665c08d878ce5f2df9746b2f334c64642ab4a735c943be8>
 * Now from manager execute <kubectl get nodes>
+
