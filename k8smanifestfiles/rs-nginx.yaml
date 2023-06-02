@@ -3,6 +3,8 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: rsnginx
+  labels:
+    app: nginx
 spec:
   minReadySeconds: 1
   replicas: 3
