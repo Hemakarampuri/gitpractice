@@ -1,3 +1,5 @@
+### kubernetes installation options:
+![preview](./Images/k8s11.png)
 ### k8s installation
 * Install docker in both the nodes,master & worker nodes
 * To install the latest stable versions of Docker CLI, Docker Engine, and their

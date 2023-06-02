@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: karampuri
+spec:
+  containers:
+    - name: nginx4
+      image: nginx
+      ports:
+        - containerPort: 80  
+    - name: hemahttpd
+      image: httpd
+      ports:
+        - containerPort: 80

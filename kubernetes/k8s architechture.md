@@ -13,6 +13,7 @@ Kubernetes or k8s is an orchestrator to build, deploy, update, and manage contai
 8. Centralized Logging & Monitoring: Kubernetes provides Centralized Logging & Monitoring systems which help us to debug and monitor the issues and warnings
 9. Configuration Management: Centralized Config management helps in managing microservices at one place
 10. Automated Rollouts and rollback: It helps in deployments and rolling back the deployments in case of any problems in deployment.K8s can handle rollout (new version) and roll back (undo new version => previous version)
+* It has many options for controlling and managing pods and containers including Deployments, StatefulSets, ReplicaSets, etc. Each of these elements has a distinct purpose, with the common goal of ensuring that pods operate constantly. Just like the other features of k8s, Jobs & Cronjobs are also part of that list.
 ### Distributed System:
 A distributed system is simply a collection of components networked across multiple computers. The components are independent (or at least should be), can fail without impacting other services, and work concurrently.
 ### Node:
@@ -86,3 +87,24 @@ Virtualized deployments allow you to scale quickly and spread the resources of a
 Container Deployment is the next step in the drive to create a more flexible and efficient model. Much like VMs, containers have individual memory, system files, and processing space. However, strict isolation is no longer a limiting factor. Multiple applications can now share the same underlying operating system. This feature makes containers much more efficient than full-blown VMs. They are portable across clouds, different devices, and almost any OS distribution.
 ![preview](./Images/k8s7.png)
 The container structure also allows for applications to run as smaller, independent parts. These parts can then be deployed and managed dynamically on multiple machines. The elaborate structure and the segmentation of tasks are too complex to manage manually.
+### Jobs & cronjobs:
+A CronJob creates Jobs on a repeating schedule.Jobs are used for one-time or finite tasks that run to completion, while CronJobs are used for running a task on a recurring schedule.
+### Pod lifecycle
+1. Pending: The Kubernetes system accepts the Pod, but doesn’t create one or more of the Container images. This includes time spent prior to being scheduled as well as time spent downloading images over the network, which may take some time.
+2. Running: The Pod associates with a node, and then creates all containers. At least one Container is still active or is in the process of being started or restarted.
+3. Succeeded: All Containers in the Pod successfully terminates and will not restart.
+4. Failed: All Containers in the Pod have terminated, and at least one of them has failed. That is, either the Container exited with a non-zero status or the system terminated it.
+5. Unknown: The state of the Pod is unknown for some reason, most likely due to a communication error with the Pod’s host.
+![preview](./Images/k8s12.png)
+### Pod Conditions:
+The phase of a pod says little about the condition of the pod. The main pod conditions are:
+1. PodScheduled: Shows whether or not the pod has been scheduled to a node.
+2. Initialized: The pod’s init containers have all completed successfully.
+3. ContainersReady: All containers in the pod indicate that they are ready.
+4. Ready: The pod is ready to provide services to its clients.
+Kubernetes tracks the state of each container within a Pod in addition to the overall phase of the Pod. Container lifecycle hooks can trigger events at specific points in a container’s lifecycle.
+### Container States:
+* While looking into Kubernetes Pod States, we also need to know about Container States. Once a Node assigns a Pod by the scheduler, the kubelet begins creating containers for that Pod using a container runtime. Waiting, Running, and Terminated are the three possible container states.
+1. Waiting: A container is Waiting if it is not in the Running or Terminated states. A container in the Waiting state is still performing the operations necessary for it to complete startup.
+2. Running: The Running status indicates that a container is running normally.
+3. Terminated: A container in the Terminated state started execution and then either finished or failed for some reason.

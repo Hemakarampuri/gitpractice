@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: hemak
+spec:
+  containers:
+    - name: nginx1
+      image: nginx
+      ports:
+        - containerPort: 80
+    - name: alpine1
+      image: alpine
+      args:
+        - sleep
+        - 1d
+    - name: alpine2
+      image: alpine
+      args:
+        - sleep
+        - 10s
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjobhema
+spec:
+  schedule: '* * * * *'
+  jobTemplate:
+    metadata: 
+      name: heema
+    spec:
+      backoffLimit: 3
+      template:
+        metadata:
+          name: hima
+        spec:
+          restartPolicy: 
+          containers:
+            - name: alpine
+              image: alpine
+              args:
+                - sleep
+                - 20s
