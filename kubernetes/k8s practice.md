@@ -14,6 +14,7 @@
 * A ReplicationController is responsible for managing the pod lifecycle and ensuring that the specified number of pods required are running at any given time. 
 * If there are too many pods, the ReplicationController terminates the extra pods. If there are too few, the ReplicationController starts more pods. Unlike manually created pods, the pods maintained by a ReplicationController are automatically replaced if they fail, are deleted, or are terminated.
 * replicaset nginx pod without selectors:
+```
 ---
 apiVersion: apps/v1
 kind: ReplicaSet
@@ -31,8 +32,10 @@ spec:
           image: nginx:1.25
           ports:
             - containerPort: 80
+```            
 ![preview](./Images/k8s18.png)
 * replicaset nginx pod with selectors:
+```
 ---
 apiVersion: apps/v1
 kind: ReplicaSet
@@ -57,5 +60,20 @@ spec:
           image: nginx:1.25
           ports:
             - containerPort: 80
-![preview](./Images/k8s19.png)
-![preview](./Images/k8s20.png)
+```
+![preview](./Images/k8s21.png)
+To describe the replicaset
+```
+kubectl describe rs rsnginx
+```
+![preview](./Images/k8s22.png)
+* Now delete all the three pods and then check number of pods
+![preview](./Images/k8s23.png)
+* We can see three new pods created as number of replicasets are 3.
+* we can scale the number of pods using the command
+```
+kubectl scale --replicas=4 rs/rsnginx
+```  
+![preview](./Images/k8s24.png)
+
+
