@@ -1,3 +1,5 @@
+### Kuberenetes controllers:
+![preview](./Images/k8scontrollers.png)
 ### creating pod with
 1. nginx
 2. nginx & alpine with sleep 1d
@@ -31,3 +33,29 @@ spec:
             - containerPort: 80
 ![preview](./Images/k8s18.png)
 * replicaset nginx pod with selectors:
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rsnginx
+  labels:
+    app: nginx
+spec:
+  minReadySeconds: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: rspod
+      labels:
+        app: nginx
+    spec:  
+      containers:
+        - name: nginx
+          image: nginx:1.25
+          ports:
+            - containerPort: 80
+![preview](./Images/k8s19.png)
+![preview](./Images/k8s20.png)
