@@ -112,3 +112,8 @@ kubectl apply -f rs-jenkins.yaml
 ![preview](./Images/k8s27.png)
 * now delete one pod and describe replicaset
 ![preview](./Images/k8s28.png)
+
+#### creating nginx pod with label
+![preview](./Images/k8s29.png)
+
+![preview](./Images/k8s30.png)
