@@ -7,5 +7,5 @@ metadata:
 spec:
   selector:
     app: nginx
-  type: ClusterIp
+  type: ClusterIP
   
