@@ -1,5 +1,9 @@
 ### Kuberenetes controllers:
 ![preview](./Images/k8scontrollers.png)
+* connect the kubernetes cluster to azure cli
+```
+ az aks get-credentials --resource-group k8s --name k8scluster
+```
 ### creating pod with
 1. nginx
 2. nginx & alpine with sleep 1d
@@ -117,3 +121,89 @@ kubectl apply -f rs-jenkins.yaml
 ![preview](./Images/k8s29.png)
 
 ![preview](./Images/k8s30.png)
+
+#### creating a replicaset,service file for nginx and alpine pod
+* alpinepod.yaml
+```
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine
+spec:
+  containers:
+    - name: alpine
+      image: alpine
+      command:
+        - sleep
+        - 1d
+```
+* nginx-rs.yaml
+```
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-rs
+  labels:
+    app: nginx
+    layer: web
+    version: "1.23"
+spec:
+  minReadySeconds: 1
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+        version: "1.23"
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.23
+          ports:
+            - containerPort: 80
+```
+* nginx-svc.yaml
+```
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+  labels: 
+spec:
+  selector:
+    app: nginx
+  type: ClusterIP
+  ports:
+    - name: nginx-svc
+      port: 80
+      targetPort: 80
+      protocol: TCP
+```
+```
+kubectl apply -f nginx-svc.yaml
+kubectl apply -f alpinepod.yaml
+kubectl apply -f nginx-rs.yaml
+kubectl get po
+kubectl get rs
+kubectl get po --show-labels
+kubectl get svc -o wide
+```
+![preview](./Images/k8s31.png)
+![preview](./Images/k8s32.png)
+#### create an alpine pod and login into it
+```
+kubectl exec -it alpine -- /bin/sh
+```
+* ping nginx-svc by its IP address and acces through web page using curl
+```
+ping -c 3 10.0.214.250
+```
+![preview](./Images/k8s33.png)
+![preview](./Images/k8s34.png)
