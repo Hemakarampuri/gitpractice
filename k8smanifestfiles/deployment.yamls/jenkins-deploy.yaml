@@ -8,7 +8,7 @@ spec:
   replicas: 8
   selector:
     matchLabels:
-      app: jenkins/jenkins
+      app: jenkins
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -16,12 +16,12 @@ spec:
       maxUnavailable: 50%
   template:
     metadata:
-      name: jenkins
+      name: jenkins-deploy
       labels:
-        app: jenkins/jenkins
+        app: jenkins
     spec:
       containers:
-        - name: jenkins
+        - name: jenkins-deploy
           image: jenkins/jenkins:lts-jdk11
           ports:
             - containerPort: 8080
