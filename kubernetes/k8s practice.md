@@ -1,3 +1,6 @@
+### Kubernetes api resources
+![preview](./Images/api-resources1.png)
+![preview](./Images/api-resources2.png)
 ### Kuberenetes controllers:
 ![preview](./Images/k8scontrollers.png)
 * connect the kubernetes cluster to azure cli
@@ -207,3 +210,25 @@ ping -c 3 10.0.214.250
 ```
 ![preview](./Images/k8s33.png)
 ![preview](./Images/k8s34.png)
+### manifest with loadbalancer
+```
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-lb
+spec:
+  ports:
+    - name: nginx-lb
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: nginx
+  type: LoadBalancer
+```
+![preview](./Images/k8s35.png)
+* To delete svc
+```
+kubectl delete svc nginx-lb
+```

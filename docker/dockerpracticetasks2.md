@@ -1,9 +1,11 @@
 ### Create an alpine container in interactive mode and install python
 * manual process:
-* <docker container run -it --name alpine1 alpine:latest>
-* <apk --update upgrade>
-* <apk add python3>
-* <python3 --version>
+``` 
+docker container run -it --name alpine1 alpine:latest
+apk --update upgrade
+apk add python3
+python3 --version
+```
 ![preview](./Images/docker1.png.png)
 * By using dockerfile
 * create a dockerfile with

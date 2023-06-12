@@ -108,3 +108,6 @@ Kubernetes tracks the state of each container within a Pod in addition to the ov
 1. Waiting: A container is Waiting if it is not in the Running or Terminated states. A container in the Waiting state is still performing the operations necessary for it to complete startup.
 2. Running: The Running status indicates that a container is running normally.
 3. Terminated: A container in the Terminated state started execution and then either finished or failed for some reason.
+
+### OSI layers
+![preview](./Images/OSI-7-layers.jpg)
