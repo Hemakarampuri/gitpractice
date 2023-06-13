@@ -232,3 +232,151 @@ spec:
 ```
 kubectl delete svc nginx-lb
 ```
+### k8s healthchecks
+* k8s supports 3 kinds of checks:
+#### 1.liveness probes:
+* The kubelet uses liveness probes to know when to restart a container. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress. Restarting a container in such a state can help to make the application more available despite bugs.
+* Caution: Liveness probes can be a powerful way to recover from application failures, but they should be used with caution. 
+#### 2.readiness probes:
+* The kubelet uses readiness probes to know when a container is ready to start accepting traffic. A Pod is considered ready when all of its containers are ready. One use of this signal is to control which Pods are used as backends for Services. When a Pod is not ready, it is removed from Service load balancers.
+#### 3.startup probes:
+* The kubelet uses startup probes to know when a container application has started
+* Startup probes are similar to readiness probes, but they are used specifically during the startup phase of a container. If a container fails a startup probe, Kubernetes will kill the container and restart it. Startup probes are useful for detecting when an application needs more time to start up than expected.
+* Liveness Probe—indicates if the container is operating. If so, no action is taken.
+* Readiness Probe—indicates whether the application running in the container is ready to accept requests.
+* Startup Probe—indicates whether the application running in the container has started.
+
+
+### k8s deployment spec
+##### Deployment
+* Deployment is a k8s object which can help in rolling out and rolling back updates.
+* Deployment controls replica set and replica set controls pods
+### creating jenkins svc and jenkins deployment yaml
+```
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-svc
+spec:
+  selector:
+    app: jenkins
+  ports:
+    - name: jenkins-svc
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  type: LoadBalancer
+```
+```
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deploy
+spec:
+  minReadySeconds: 1
+  replicas: 8
+  selector:
+    matchLabels:
+      app: jenkins
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      name: jenkins-deploy
+      labels:
+        app: jenkins
+    spec:
+      containers:
+        - name: jenkins-deploy
+          image: jenkins/jenkins:lts-jdk11
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+              protocol: TCP
+```
+```
+kubectl apply -f jenkins-svc.yaml
+kubectl get svc
+kubectl apply -f jenkins-deploy.yaml
+kubectl get deployments
+kubectl get pods
+```
+![preview](./Images/k8s36.png)
+```
+ kubectl describe deploy jenkins-deploy
+```
+![preview](./Images/k8s37.png)
+![preview](./Images/k8s38.png)
+```
+kubectl rollout history deployment/jenkins-deploy
+kubectl rollout status deployment/jenkins-deploy
+```
+![preview](./Images/k8s39.png)
+### creating nginx deployment spec:
+```
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+  labels:
+    app: nginx
+spec:
+  minReadySeconds: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      name: nginx-deploy
+      labels:
+        app: nginx
+        ver: "1.23"
+    spec:
+      containers:
+        - name: nginx-deploy
+          image: nginx
+          ports:
+            - containerPort: 80
+              hostPort: 80
+              protocol: TCP
+```
+### nginx service spec
+```
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: nginx-svc
+spec:
+  selector:
+    app: nginx
+  ports:
+    - name: nginx
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  type: LoadBalancer
+```
+```
+kubectl apply -f nginx-deploy.yaml
+kubectl get deploy
+kubectl apply -f nginx-svc.yaml
+kubectl get svc
+```
+![preview](./Images/k8s40.png)
+* access the external IP through web
+![preview](./Images/k8s41.png)
+![preview](./Images/k8s42.png)
+
