@@ -18,7 +18,7 @@ spec:
   apiVersion: apps/v1
   kind: ReplicaSet 
   metadata:
-    name: httpd-rs
+    name: https-rs
     labels:
       app: httpd
   spec:
@@ -29,13 +29,14 @@ spec:
         app: httpd
     template:
       metadata:
-        name: httpd-rs
+        name: httpd
         labels:
           app: httpd
       spec:
         containers:
-          - name: httpd-rs
-            image: httpd-2.4.57
+          - name: httpd
+            image: httpd
+            imagePullPolicy: Always
             ports:
               - containerPort: 80
             livenessProbe:
@@ -44,10 +45,6 @@ spec:
               periodSeconds: 10
               successThreshold: 1
               timeoutSeconds: 10
-              exec:
-                command:
-                  - sleep
-                  - 10s
               httpGet:
                 path: /
                 port: 80

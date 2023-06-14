@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd-ds
+  annotations:
+    kubernetes.io/change-cause: "updated fluentd debian to fluentd version3 "
+spec:
+  minReadySeconds: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: fluentd
+  template:
+    metadata:
+      name: fluentd
+      labels:
+        app: fluentd
+    spec:
+      containers:
+        - name: fluentd
+          image: fluentd:version3
+

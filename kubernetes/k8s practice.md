@@ -232,19 +232,94 @@ spec:
 ```
 kubectl delete svc nginx-lb
 ```
-### k8s healthchecks
+### k8s healthchecks:
 * k8s supports 3 kinds of checks:
-#### 1.liveness probes:
+#### 1. Liveness probes:
 * The kubelet uses liveness probes to know when to restart a container. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress. Restarting a container in such a state can help to make the application more available despite bugs.
 * Caution: Liveness probes can be a powerful way to recover from application failures, but they should be used with caution. 
-#### 2.readiness probes:
+#### 2. Readiness probes:
 * The kubelet uses readiness probes to know when a container is ready to start accepting traffic. A Pod is considered ready when all of its containers are ready. One use of this signal is to control which Pods are used as backends for Services. When a Pod is not ready, it is removed from Service load balancers.
-#### 3.startup probes:
+#### 3. Startup probes:
 * The kubelet uses startup probes to know when a container application has started
 * Startup probes are similar to readiness probes, but they are used specifically during the startup phase of a container. If a container fails a startup probe, Kubernetes will kill the container and restart it. Startup probes are useful for detecting when an application needs more time to start up than expected.
 * Liveness Probe—indicates if the container is operating. If so, no action is taken.
+##### FailureThreshold
+Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+##### PnitialDelaySeconds
+when do you want to start the probe i.e., immediately after container started running or after sometime.
+##### PeriodSeconds
+How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+##### successThreshold
+Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.
+##### TimeoutSeconds
+By what time our check get responds.
+
 * Readiness Probe—indicates whether the application running in the container is ready to accept requests.
 * Startup Probe—indicates whether the application running in the container has started.
+* Lets create httpd pod with healthchecks:
+```
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-svc
+  labels:
+    app: httpd
+spec:
+  selector:
+   app: httpd
+  ports:
+    - name: httpd-svc
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+---
+  apiVersion: apps/v1
+  kind: ReplicaSet 
+  metadata:
+    name: https-rs
+    labels:
+      app: httpd
+  spec:
+    minReadySeconds: 1
+    replicas: 2
+    selector:
+      matchLabels:
+        app: httpd
+    template:
+      metadata:
+        name: httpd
+        labels:
+          app: httpd
+      spec:
+        containers:
+          - name: httpd
+            image: httpd
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 80
+            livenessProbe:
+              failureThreshold: 3
+              initialDelaySeconds: 1
+              periodSeconds: 10
+              successThreshold: 1
+              timeoutSeconds: 10
+              httpGet:
+                path: /
+                port: 80
+            readinessProbe:
+              failureThreshold: 1
+              initialDelaySeconds: 1
+              periodSeconds: 1
+              successThreshold: 1
+              timeoutSeconds: 1
+              httpGet:
+                path: /
+                port: 80
+```
+![preview](./Images/k8s43.png)
+
 
 
 ### k8s deployment spec
@@ -379,4 +454,14 @@ kubectl get svc
 * access the external IP through web
 ![preview](./Images/k8s41.png)
 ![preview](./Images/k8s42.png)
-
+### Daemonset
+* DaemonSet is a controller which creates pod on every/selected nodes in k8s cluster
+###### Use cases:
+* log collectors
+* agents etc
+* [referhere](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\deployment.) for daemonset yamls
+![preview](./Images/k8s44.png)
+![preview](./Images/k8s45.png)
+#### persistent volumes
+* [referhere](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\storage-volumes\persistentvolumes) for persistent volume manifests
+* ![preview](./Images/k8s46.png)

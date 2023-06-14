@@ -1,10 +1,11 @@
+---
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: setbased
   labels:
     purpose: learning
-    concept: sebased
+    concept: setbased
 spec:
   minReadySeconds: 2
   replicas: 3
