@@ -459,9 +459,19 @@ kubectl get svc
 ###### Use cases:
 * log collectors
 * agents etc
-* [referhere](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\deployment.) for daemonset yamls
+* [refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\deployment.) for daemonset yamls
 ![preview](./Images/k8s44.png)
 ![preview](./Images/k8s45.png)
 #### persistent volumes
-* [referhere](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\storage-volumes\persistentvolumes) for persistent volume manifests
+* [refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\storage-volumes\persistentvolumes) for persistent volume manifests
 * ![preview](./Images/k8s46.png)
+#### adding msql env to the spec
+* [refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\storage-volumes\persistentvolumes\mysql.env.pod.yaml)
+for env spec
+![preview](./Images/k8s48.png)
+![preview](./Images/k8s49.png)
+![preview](./Images/k8s50.png)
+![preview](./Images/k8s51.png)
+* now delete the pod and run the pod again without inserting data in mysqldb
+![preview](./Images/k8s52.png)
+![preview](./Images/k8s53.png)
