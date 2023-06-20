@@ -56,7 +56,9 @@ sudo systemctl restart apache2
 ![preview](./Images/ansible3.png)
 ![preview](./Images/ansible2.png)
 ### By playbook
-[Refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\playbooks) for lamp playbook
+[Refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\lamp\playbooks\ubuntu.yaml) for lamp playbook
 ```
-ansible-playbook -i <inventory-path> <playbook-path>
+ansible-playbook -i inventory/hosts playbooks/ubuntu.yaml
 ```
+![preview](./Images/ansible4.png)
+![preview](./Images/ansible5.png)
