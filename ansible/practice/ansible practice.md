@@ -42,6 +42,7 @@ ansible -i hosts -m ping all
 ### lamp
 * A “LAMP” stack is a group of open source software that is typically installed together in order to enable a server to host dynamic websites and web apps written in PHP. This term is an acronym which represents the Linux operating system with the Apache web server. The site data is stored in a MySQL database, and dynamic content is processed by PHP.
 * lamp:-linux,apache,mysql,php
+#### In Ubuntu
 #### Manual process:
 ```
 sudo apt update
@@ -62,3 +63,34 @@ ansible-playbook -i inventory/hosts playbooks/ubuntu.yaml
 ```
 ![preview](./Images/ansible4.png)
 ![preview](./Images/ansible5.png)
+![preview](./Images/ansible6.png)
+#### In Redhat
+#### Manual process:
+```
+sudo yum install httpd -y
+sudo systemctl enable httpd
+sudo systemctl start httpd
+sudo yum install php -y
+sudo systemctl restart httpd
+sudo -i
+echo '<?php phpinfo(); ?>' > /var/www/html/info.php
+exit
+sudo systemctl restart httpd
+```
+![preview](./Images/ansible7.png)
+![preview](./Images/ansible8.png)
+#### By Playbook:
+* Installing ansible in redhat
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py --user
+python3 -m pip install --user ansible
+python3 -m pip install --user ansible-core==2.12.3
+python3 -m pip install --upgrade --user ansible
+ansible --version
+python3 -m pip show ansible
+```
+![preview](./Images/ansible9.png)
+![preview](./Images/ansible10.png)
+![preview](./Images/ansible11.png)
+
