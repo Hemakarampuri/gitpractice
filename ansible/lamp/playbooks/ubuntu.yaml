@@ -1,7 +1,7 @@
 ---
 - name: installing lamp server on ubuntu
   hosts: all
-  become: yes
+  become: true
   tasks:
     - name: update packages and install apache
       ansible.builtin.apt:
