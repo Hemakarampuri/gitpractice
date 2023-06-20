@@ -11,12 +11,12 @@
 ##### INVENTORY:
 Inventory is a list of nodes.Number of nodes or machines which need to be connected to ansible control node or configured.
 ##### Ansible installation:
-1. create a virtual machine and add user hema.Enable password based authentication and add user to sshd_config file.Then exit and re-login with user name as hema.Check for python installed  or not.
+1. create a virtual machine and edit sshd_config file Enable password based authentication from no to yes.Then restart and add user hema.Then add user hema to sudoers with no passwd authentication.Exit and re-login with user name as hema.Check for python installed  or not.
 ```
 sudo vi /etc/ssh/sshd_config
-sudo systemctl restart sshd
+sudo service sshd restart
 sudo adduser hema
-sudo visudo
+sudo visudo (hema ALL=(ALL:ALL)NOPASSWD:ALL)
 python3 --version
 ```
 2. Install ansible in ansible control node
@@ -35,4 +35,25 @@ sudo apt install ansible -y
 ```
 ansible -i hosts -m ping all
 ```
+#### ansible playbook
+* [refer here](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) for yaml syntax
+* [refer here](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks.html#working-with-playbooks) for ansible playbook docs
+
+### lamp
+* A “LAMP” stack is a group of open source software that is typically installed together in order to enable a server to host dynamic websites and web apps written in PHP. This term is an acronym which represents the Linux operating system with the Apache web server. The site data is stored in a MySQL database, and dynamic content is processed by PHP.
+* lamp:-linux,apache,mysql,php
+#### Manual process:
+```
+sudo apt update
+sudo apt install apache2 -y
+sudo apt install php libapache2-mod-php php-mysql
+sudo -i
+echo '<?php phpinfo(); ?>' > /var/www/html/info.php
+exit and relogin
+sudo systemctl restart apache2
+
+```
+![preview](./Images/ansible3.png)
+![preview](./Images/ansible2.png)
+### By playbook
 
