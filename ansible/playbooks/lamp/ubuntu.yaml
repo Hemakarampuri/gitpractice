@@ -14,7 +14,8 @@
           - php
           - libapache2-mod-php
           - php-mysql
-    - name: copy php info page
+        state: present
+    - name: copy info.php page
       ansible.builtin.copy:
         content: '<?php phpinfo(); ?>'
         dest: /var/www/html/info.php
@@ -22,20 +23,4 @@
       ansible.builtin.systemd:
         name: apache2
         state: restarted
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo '<?php phpinfo(); ?>' > /var/www/html/info.php
 
