@@ -80,6 +80,7 @@ sudo systemctl restart httpd
 ![preview](./Images/ansible7.png)
 ![preview](./Images/ansible8.png)
 #### By Playbook:
+
 * Installing ansible in redhat
 ```
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -90,7 +91,14 @@ python3 -m pip install --upgrade --user ansible
 ansible --version
 python3 -m pip show ansible
 ```
-![preview](./Images/ansible9.png)
+* take ansible control node and node1 as redhat machine.
+[Refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\lamp\playbooks\redhat.yaml) for redhat playbook
 ![preview](./Images/ansible10.png)
-![preview](./Images/ansible11.png)
+![preview](./Images/ansible12.png)
+![preview](./Images/ansible13.png)
+![preview](./Images/ansible14.png)
+![preview](./Images/ansible15.png)
+### Anisble handlers
+Sometimes you want a task to run only when a change is made on a machine. For example, you may want to restart a service if a task updates the configuration of that service, but not if the configuration is unchanged. Ansible uses handlers to address this use case. Handlers are tasks that only run when notified.
 
+IP

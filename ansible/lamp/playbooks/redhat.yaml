@@ -7,12 +7,12 @@
       ansible.builtin.yum:
         name: httpd
         state: present
-    - name: enable and start apache
+    - name: enable and start httpd
       ansible.builtin.systemd:
         name: httpd
         enabled: yes
         state: restarted
-    - name: install apache server
+    - name: install php server
       ansible.builtin.yum:
         name: php
         state: present
@@ -20,7 +20,7 @@
       ansible.builtin.copy:
         content: '<?php phpinfo(); ?>'
         dest: /var/www/html/info.php
-    - name: restart apache
+    - name: restart httpd
       ansible.builtin.systemd:
         name: httpd
         state: restarted
