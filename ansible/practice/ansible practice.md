@@ -57,7 +57,7 @@ sudo systemctl restart apache2
 ![preview](./Images/ansible3.png)
 ![preview](./Images/ansible2.png)
 ### By playbook
-* [Refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\lamp\playbooks\ubuntu.yaml) for lamp playbook
+* [refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\lamp\playbooks\ubuntu.yaml) for lamp playbook
 ```
 ansible-playbook -i inventory/hosts playbooks/ubuntu.yaml
 ```
@@ -92,7 +92,7 @@ ansible --version
 python3 -m pip show ansible
 ```
 * take ansible control node and node1 as redhat machine.
-[Refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\lamp\playbooks\redhat.yaml) for redhat playbook
+[refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\lamp\playbooks\redhat.yaml) for redhat playbook
 ![preview](./Images/ansible10.png)
 ![preview](./Images/ansible12.png)
 ![preview](./Images/ansible13.png)
