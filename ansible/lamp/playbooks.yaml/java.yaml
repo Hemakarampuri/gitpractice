@@ -1,0 +1,10 @@
+---
+name: install java
+hosts: all
+become: yes
+tasks:
+  - name: update packages and install java
+    ansible.builtin.apt:
+      name: install 9-jdk17
+      update_cache: true
+      state: present
