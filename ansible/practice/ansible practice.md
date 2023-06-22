@@ -100,12 +100,3 @@ python3 -m pip show ansible
 ![preview](./Images/ansible15.png)
 ### Anisble handlers
 Sometimes you want a task to run only when a change is made on a machine. For example, you may want to restart a service if a task updates the configuration of that service, but not if the configuration is unchanged. Ansible uses handlers to address this use case. Handlers are tasks that only run when notified.
-
-50000
-
-2^16
-n=16
-N=32-16
- =16
- 11111111.11111111.00000000.00000000
- 255.255.0.0
