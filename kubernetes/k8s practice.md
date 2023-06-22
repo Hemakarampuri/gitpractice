@@ -459,19 +459,116 @@ kubectl get svc
 ###### Use cases:
 * log collectors
 * agents etc
-* [refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\deployment.) for daemonset yamls
+### Daemonset yaml
+```
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd-ds
+  annotations:
+    kubernetes.io/change-cause: "updated fluentd debian to fluentd version3 "
+spec:
+  minReadySeconds: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: fluentd
+  template:
+    metadata:
+      name: fluentd
+      labels:
+        app: fluentd
+    spec:
+      containers:
+        - name: fluentd
+          image: fluentd:version3
+
+
+```
 ![preview](./Images/k8s44.png)
 ![preview](./Images/k8s45.png)
 #### persistent volumes
-* [refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\storage-volumes\persistentvolumes) for persistent volume manifests
+
+* mysql.pvc.yaml
+```
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: managed
+```
+* mysql.vol.yaml
+```
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysqlvol
+  labels:
+    app: mysql
+    layer: db
+spec:
+  containers:
+    - name: mysql
+      image: mysql:8.0.33
+      ports:
+        - containerPort: 3306
+      volumeMounts:
+        - name: hema
+          mountPath: var/lib/mysql
+  volumes:
+    - name: hema
+      emptyDir:
+        sizeLimit: 100Mi
+```
+
 * ![preview](./Images/k8s46.png)
 #### adding msql env to the spec
-* [refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\k8smanifestfiles\storage-volumes\persistentvolumes\mysql.env.pod.yaml)
-for env spec
+* mysql.env.pod.yaml
+```
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-vol
+  labels:
+    app: mysql
+    layer: db
+spec:
+  containers:
+    - name: mysql
+      image: mysql:8.0.33
+      ports:
+        - containerPort: 3306
+      volumeMounts:
+        - name: mysql-vol
+          mountPath: var/lib/mysql
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: rootroot
+        - name: MYSQL_USER
+          value: hema
+        - name: MYSQL_PASSWORD
+          value: rootroot  
+        - name: MYSQL_DATABASE
+          value: students
+  volumes:
+    - name: mysql-vol
+      persistentVolumeClaim:
+        claimName: mysql-pvc
+```
 ![preview](./Images/k8s48.png)
 ![preview](./Images/k8s49.png)
 ![preview](./Images/k8s50.png)
 ![preview](./Images/k8s51.png)
-* now delete the pod and run the pod again without inserting data in mysqldb
+* Now delete the pod and run the pod again without inserting data in mysqldb
 ![preview](./Images/k8s52.png)
 ![preview](./Images/k8s53.png)
