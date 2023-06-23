@@ -1,11 +1,14 @@
 #### Ansible is a software tool that provides simple but powerful automation for cross-platform computer support
+* Configuration Management:Configuration Management is the process of maintaining systems, such as computer hardware and software, in a desired state. 
 * There are two types of configuration managements.They are 
 1. Push based configuration management:
 * No agents are required.only login credentials are required to connect to nodes.
+##### Examples:
 * Ansible
 * Saltstack
 2. Pull based configuration management:
 * Agents are required to connect nodes.
+##### Examples:
 * Chef
 * Puppet
 ##### INVENTORY:
@@ -52,12 +55,37 @@ sudo -i
 echo '<?php phpinfo(); ?>' > /var/www/html/info.php
 exit and relogin
 sudo systemctl restart apache2
-
 ```
 ![preview](./Images/ansible3.png)
 ![preview](./Images/ansible2.png)
-### By playbook
-* [refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\lamp\playbooks\ubuntu.yaml) for lamp playbook
+### By playbook:
+```
+---
+- name: installing lamp server on ubuntu
+  hosts: all
+  become: true
+  tasks:
+    - name: update packages and install apache
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+        update_cache: yes
+    - name: install php packages
+      ansible.builtin.apt:
+        name:
+          - php
+          - libapache2-mod-php
+          - php-mysql
+        state: present
+    - name: copy info.php page
+      ansible.builtin.copy:
+        content: '<?php phpinfo(); ?>'
+        dest: /var/www/html/info.php
+    - name: restart apache2
+      ansible.builtin.systemd:
+        name: apache2
+        state: restarted
+```
 ```
 ansible-playbook -i inventory/hosts playbooks/ubuntu.yaml
 ```
@@ -80,7 +108,6 @@ sudo systemctl restart httpd
 ![preview](./Images/ansible7.png)
 ![preview](./Images/ansible8.png)
 #### By Playbook:
-
 * Installing ansible in redhat
 ```
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -92,17 +119,45 @@ ansible --version
 python3 -m pip show ansible
 ```
 * take ansible control node and node1 as redhat machine.
-[refer here](C:\Users\karam\OneDrive\Desktop\gitclassroompractice\gitpractice\ansible\lamp\playbooks\redhat.yaml) for redhat playbook
+```
+---
+- name: installing lamp server on redhat
+  hosts: all
+  become: true
+  tasks:
+    - name: update packages and install httpd
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+    - name: enable and start httpd
+      ansible.builtin.systemd:
+        name: httpd
+        enabled: yes
+        state: restarted
+    - name: install php server
+      ansible.builtin.yum:
+        name: php
+        state: present
+    - name: copy info.php page
+      ansible.builtin.copy:
+        content: '<?php phpinfo(); ?>'
+        dest: /var/www/html/info.php
+    - name: restart httpd
+      ansible.builtin.systemd:
+        name: httpd
+        state: restarted
+```
 ![preview](./Images/ansible10.png)
 ![preview](./Images/ansible12.png)
 ![preview](./Images/ansible13.png)
 ![preview](./Images/ansible14.png)
 ![preview](./Images/ansible15.png)
+
 ### Nginx
-* Manual process
+* Manual process:
 ![preview](./Images/ansible16.png)
 ![preview](./Images/ansible17.png)
-* By playbook
+* By playbook:
 ```
 ---
 name: install nginx
@@ -114,7 +169,6 @@ tasks:
       - name: nginx
         state: present
         update_cache: yes
-
 ```
 
 ### Anisble handlers
