@@ -1,18 +1,41 @@
-#### Ansible is a software tool that provides simple but powerful automation for cross-platform computer support
+#### Ansible:
+Ansible is a software tool that provides simple but powerful automation for cross-platform computer support
+* Ansible is a tool written in Python, and it uses the declarative markup language YAML to describe the desired state of devices and configuration.
 * Configuration Management:Configuration Management is the process of maintaining systems, such as computer hardware and software, in a desired state. 
 * There are two types of configuration managements.They are 
+
 1. Push based configuration management:
 * No agents are required.only login credentials are required to connect to nodes.
 ##### Examples:
 * Ansible
 * Saltstack
+
 2. Pull based configuration management:
 * Agents are required to connect nodes.
 ##### Examples:
-* Chef
+* Chefc
 * Puppet
+
+##### PLAYBOOK:
+Playbooks are YAML files containing a list of ordered tasks that should be executed on a remote server to complete a task or reach a certain goal.
+* Ansible playbooks allow you to fully automate server setup and application deployment, using an accessible syntax and an extensive library of built-in resources.
+
+##### Ansible modules:
+Ansible modules are units of code that can control system resources or execute system commands. Ansible provides a module library that you can execute directly on remote hosts or through playbooks. You can also write custom modules.
+
+### Facts
+Ansible collects information about the node on which it is executing by the help of module called as SETUP.
+
 ##### INVENTORY:
 Inventory is a list of nodes.Number of nodes or machines which need to be connected to ansible control node or configured.
+* An Ansible inventory is a collection of managed hosts we want to manage with Ansible for various automation and configuration management tasks
+* Two types of inventories.
+1. Static: we list the nodes to be connected to control node.
+2. Dynamic: we write a script to choose which nodes should be connected.
+
+##### ROLES:
+In Ansible, the role is the primary mechanism for breaking a playbook into multiple files. This simplifies writing complex playbooks, and it makes them easier to reuse.
+
 ##### Ansible installation:
 1. create a virtual machine and edit sshd_config file Enable password based authentication from no to yes.Then restart and add user hema.Then add user hema to sudoers with no passwd authentication.Exit and re-login with user name as hema.Check for python installed  or not.
 ```
