@@ -8,3 +8,15 @@ What is Azure DevOps?
 ### Azure Pipelines (Build and Release)
 Azure Pipeline is a cloud-hosted pipelines for fast CI/CD that works with any language, platform, and cloud. By connecting to any source control like GitHub, this service can release changes continuously to any cloud. YAML files are very useful in writing build and release definitions. Azure Pipelines has components like build, release, library, task groups, deployment groups. Azure Pipelines has advance workflows with native container support and features which allow monitoring CI/CD stages.
 * [Refer Here](https://www.dotnettricks.com/learn/devops/introduction-to-azure-devops) for official docs on Azure-DevOps.
+
+### GIT: 
+Git is a free open source distributed version control system that tracks changes in any set of computer files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
+* Git is a DevOps tool used for source code management.
+
+#### We can change from one branch to other by "git checkout" command.
+![preview](./Images/az1.png)
+![preview](./Images/az2.png)
+* By default it shows only local branches.After chekout to master it shows to two branches.
+* Each branch have remote name and origin as {remotename/origin}
+* we can check them by command `git branch -r`
+

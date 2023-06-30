@@ -30,6 +30,7 @@ Ansible collects information about the node on which it is executing by the help
 Inventory is a list of nodes.Number of nodes or machines which need to be connected to ansible control node or configured.
 * An Ansible inventory is a collection of managed hosts we want to manage with Ansible for various automation and configuration management tasks
 * Two types of inventories.
+
 1. Static: we list the nodes to be connected to control node.
 2. Dynamic: we write a script to choose which nodes should be connected.
 
