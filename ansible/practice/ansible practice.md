@@ -46,6 +46,7 @@ sudo adduser hema
 sudo visudo (hema ALL=(ALL:ALL)NOPASSWD:ALL)
 python3 --version
 ```
+* To uninstall ansible `sudo apt-get remove ansible`
 2. Install ansible in ansible control node
 ```
 sudo apt update
