@@ -1,0 +1,16 @@
+---
+trigger:
+  - master
+pool: ubuntu-latest
+stages:
+  - stage: buildstage1
+    displayName: buildstage1
+    jobs:
+      - job: buildcode
+        displayName: buildcode
+        steps:
+          - task: Maven@4
+            inputs:
+              mavenPOMFile: 'pom.xml'
+              goals: package
+

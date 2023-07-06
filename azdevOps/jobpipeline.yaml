@@ -1,0 +1,24 @@
+---
+name: hema
+trigger:
+  - master
+pool: ubuntu-latest
+jobs:
+  - job: buildjob
+    displayName: build job
+    steps:
+      - task: Maven@4
+        inputs:
+          mavenPOMFile: 'pom.xml'
+          goals: package
+
+---
+name: hema
+trigger:
+  - master
+pool: ubuntu-latest
+steps:
+  - task: Maven@4
+    inputs:
+      mavenPOMFile: 'pom.xml'
+      goals: package
