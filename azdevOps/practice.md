@@ -93,7 +93,7 @@ steps:
 sudo apt update
 sudo apt install openjdk-8-jdk maven -y
 ```
-* Now create a new agent in azure-devops account
+* Now create a new agent in azure-devops account.Go to project settings > agent pools > Default > new agent.
 ![preview](./Images/az8.png)
 ![preview](./Images/az9.png)
 * In az-devops organization add a git repository of gol from web,then git clone ssh in terminal and check for git branch.
@@ -119,3 +119,6 @@ steps:
 ![preview](./Images/az12.png)
 ![preview](./Images/az13.png)
 ![preview](./Images/az14.png)
+
+#### SPRING PETCLINIC
+* This application requires java 17,and Maven for building and packaging the code.
