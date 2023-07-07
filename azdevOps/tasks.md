@@ -44,7 +44,7 @@ steps:
 ```
 sudo apt-get update && \
 sudo apt-get install -y dotnet-sdk-7.0
-git clone
+git clone https://github.com/nopSolutions/nopCommerce.git
 cd nop commerce
 git checkout master
 dotnet restore src/NopCommerce.sln
