@@ -87,7 +87,7 @@ steps:
 ![preview](./Images/az5.png)
 ![preview](./Images/az6.png)
 
-#### GAME OF LIFE
+## GAME OF LIFE
 * To run game-of-life we require java version 8,and maven for building and packaging the code.
 ```
 sudo apt update
@@ -121,7 +121,7 @@ steps:
 ![preview](./Images/az13.png)
 ![preview](./Images/az14.png)
 
-#### Nop commerce
+## NopCommerce
 * Manual steps:
 * Nop commerce requires .net7
 ```
@@ -136,10 +136,11 @@ dotnet build src/NopCommerce.sln
 ![preview](./Images/az15.png)
 ![preview](./Images/az16.png)
 
-##### NOP PIPELINE
+#### NOPcommerce PIPELINE
 
 * In ec2 install .net7 and add agent then connect.
 * In terminal gitclone nop url,then from there open vs code,create a file for pipelines and write nop pipeline.
+![preview](./Images/az17.png)
 ```
 trigger:
   - master
@@ -156,6 +157,6 @@ steps:
       command: build
       projects: src/NopCommerce.sln
 ```
-![preview](./Images/az17.png)
 ![preview](./Images/az18.png)
 ![preview](./Images/az19.png)
+![preview](./Images/az20.png)
