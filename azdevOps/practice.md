@@ -97,7 +97,8 @@ sudo apt install openjdk-8-jdk maven -y
 ![preview](./Images/az8.png)
 ![preview](./Images/az9.png)
 * In az-devops organization add a git repository of gol from web,then git clone ssh in terminal and check for git branch.
-* connect to vs code and write a pipeline for game-of-life.Then run the pipeline.
+
+* Go to terminal and git clone the url of corresponding application,connect to vs code and write a pipeline for game-of-life.Then run the pipeline.
 ```
 trigger:
   - master
@@ -120,5 +121,4 @@ steps:
 ![preview](./Images/az13.png)
 ![preview](./Images/az14.png)
 
-#### SPRING PETCLINIC
-* This application requires java 17,and Maven for building and packaging the code.
+#### Nop commerce
