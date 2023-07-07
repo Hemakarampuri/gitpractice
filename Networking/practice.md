@@ -28,40 +28,90 @@
 
 * Terms:
 
-1. IP ADDRESS: An Internet Protocol (IP) address is a unique numerical identifier for every device or network that connects to the internet. Typically assigned by an internet service provider (ISP), an IP address is an online device address used for communicating across the internet.
+### IP ADDRESS
+An Internet Protocol (IP) address is a unique numerical identifier for every device or network that connects to the internet. Typically assigned by an internet service provider (ISP), an IP address is an online device address used for communicating across the internet.
 
-2. NETWORK INTERFACE: A network interface is the point of interconnection between a computer and a private or public network. A network interface is generally a network interface card (NIC), but does not have to have a physical form.
+### NETWORK INTERFACE
+A network interface is the point of interconnection between a computer and a private or public network. A network interface is generally a network interface card (NIC), but does not have to have a physical form.
 
-3. NETWORK: Computer networking refers to interconnected computing devices that can exchange data and share resources with each other
+### NETWORK
+Computer networking refers to interconnected computing devices that can exchange data and share resources with each other
 
-4. SUBNET: A subnet, or subnetwork, is a segmented piece of a larger network. More specifically, subnets are a logical partition of an IP network into multiple, smaller network segments. The Internet Protocol (IP) is the method for sending data from one computer to another over the internet.
+### SUBNET 
+A subnet, or subnetwork, is a segmented piece of a larger network. More specifically, subnets are a logical partition of an IP network into multiple, smaller network segments. The Internet Protocol (IP) is the method for sending data from one computer to another over the internet.
 
-5. ROUTER:  A router is a gateway that passes data between one or more local area networks (LANs). Routers use the Internet Protocol (IP) to send IP packets containing data and IP addresses of sending and destination devices located on separate local area networks. Routers reside between these LANs where the sending and receiving devices are connected.
+### ROUTER:
+A router is a gateway that passes data between one or more local area networks (LANs). Routers use the Internet Protocol (IP) to send IP packets containing data and IP addresses of sending and destination devices located on separate local area networks. Routers reside between these LANs where the sending and receiving devices are connected.
 
-6. SWITCHING: Switching in IT and computer networking is the transfer of data packets, or blocks of data, through a network switch. Switches transfer data from source ports on devices such as computers to destination ports on devices such as routers.
+### SWITCHING
+Switching in IT and computer networking is the transfer of data packets, or blocks of data, through a network switch. Switches transfer data from source ports on devices such as computers to destination ports on devices such as routers.
 
-7. NAT: NAT stands for network address translation. It's a way to map multiple private addresses inside a local network to a public IP address before transferring the information onto the internet.
+### NAT
+NAT stands for network address translation. It's a way to map multiple private addresses inside a local network to a public IP address before transferring the information onto the internet.
 
-8. VPN: A virtual private network, or VPN, is an encrypted connection over the Internet from a device to a network. The encrypted connection helps ensure that sensitive data is safely transmitted.
+### VPN
+A virtual private network, or VPN, is an encrypted connection over the Internet from a device to a network. The encrypted connection helps ensure that sensitive data is safely transmitted.
 
-9. Gateway: A gateway is a data communication device that provides a remote network with connectivity to a host network.
+### Gateway 
+A gateway is a data communication device that provides a remote network with connectivity to a host network.
 
-10. OSI Model: The Open Systems Interconnection (OSI) model describes seven layers that computer systems use to communicate over a network. It was the first standard model for network communications.
+### OSI Model
+ The Open Systems Interconnection (OSI) model describes seven layers that computer systems use to communicate over a network. It was the first standard model for network communications.
 
-11. LOAD BALANCING: Load balancing refers to efficiently distributing incoming network traffic across a group of backend servers, also known as a server farm or server pool.
+### LOAD BALANCING
+Load balancing refers to efficiently distributing incoming network traffic across a group of backend servers, also known as a server farm or server pool.
 
-12. DNS: DNS, or the Domain Name System, translates human readable domain names (for example, www.amazon.com) to machine readable IP addresses (for example, 192.0.2.44).
+### DNS
+DNS, or the Domain Name System, translates human readable domain names (for example, www.amazon.com) to machine readable IP addresses (for example, 192.0.2.44).
 
-13. LEASED LINES: A leased line is an allocated circuit between two points of communication.Basically, leased lines are used in all places that require an uninterrupted Internet connection for collaboration and communication activities.
+### LEASED LINES 
+A leased line is an allocated circuit between two points of communication.Basically, leased lines are used in all places that require an uninterrupted Internet connection for collaboration and communication activities.
 
-14. CoLO: A leased line is an allocated circuit between two points of communication. The leased lines are used by corporate offices, businesses, companies, internet cafes, and so on. Basically, leased lines are used in all places that require an uninterrupted Internet connection for collaboration and communication activities.
+### CoLO 
+A leased line is an allocated circuit between two points of communication. The leased lines are used by corporate offices, businesses, companies, internet cafes, and so on. Basically, leased lines are used in all places that require an uninterrupted Internet connection for collaboration and communication activities.
 
-15. public and private networks: Private IP address of a system is the IP address that is used to communicate within the same network. Using private IP data or information can be sent or received within the same network. Public IP address of a system is the IP address that is used to communicate outside the network.
+### public and private networks
+Private IP address of a system is the IP address that is used to communicate within the same network. Using private IP data or information can be sent or received within the same network. Public IP address of a system is the IP address that is used to communicate outside the network.
 
-16. CIDR: Classless Inter-Domain Routing (CIDR) is an IP address allocation method that improves data routing efficiency on the internet. Every machine, server, and end-user device that connects to the internet has a unique number, called an IP address, associated with it.
+### CIDR
+Classless Inter-Domain Routing (CIDR) is an IP address allocation method that improves data routing efficiency on the internet. Every machine, server, and end-user device that connects to the internet has a unique number, called an IP address, associated with it.
 * The default CIDR range is 172.31. 0.0/16 .
 
-17. SUBNET: A subnet mask is a 32-bit number created by setting host bits to all 0s and setting network bits to all 1s. In this way, the subnet mask separates the IP address into the network and host addresses. The “255” address is always assigned to a broadcast address, and the “0” address is always assigned to a network address.
+### SUBNET
+A subnet mask is a 32-bit number created by setting host bits to all 0s and setting network bits to all 1s. In this way, the subnet mask separates the IP address into the network and host addresses. The “255” address is always assigned to a broadcast address, and the “0” address is always assigned to a network address.
+
+### ELASTIC IP
+An Elastic IP address is a static, public IPv4 address that you can allocate to your AWS account. You can associate an Elastic IP address with any instance or network interface for any VPC in your account.
+
+### VPC PEERING
+VPC peering is a networking connection between two VPCs that enables you to route traffic between them privately. This allows you to share resources between VPCs without exposing them to the public internet.
+
+### NACL
+A Network Access Control List (NACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. NACLs are stateless, meaning that responses to allowed inbound traffic are subject to the rules for outbound traffic and vice versa.
+
+### DHCP
+Dynamic Host Configuration Protocol (DHCP) is a network protocol that automatically assigns IP addresses and other network configuration settings to devices on a network. DHCP simplifies network administration because it eliminates the need for an administrator to manually assign IP addresses to every device on a network.
+
+### END POINTS
+In networking, an endpoint refers to a device or application that is connected to a network. Endpoints can include computers, servers, mobile devices, printers, and other network-connected devices. They can be configured to communicate with other endpoints on the network using specific protocols and ports.
+
+### AUTOSCALING
+Auto Scaling is a feature of Amazon Web Services (AWS) that automatically adjusts the capacity of your compute resources based on demand. This feature allows you to automatically scale the number of instances in your application or service based on traffic levels, ensuring that you have enough resources to handle any spikes in traffic.
+
+### ROUTE 53
+Amazon Route 53 is a scalable and highly available Domain Name System (DNS) service provided by Amazon Web Services (AWS). It is designed to give developers and businesses an easy way to manage domain names and perform DNS queries. Route 53 can be used to route users to Internet applications by translating human-readable domain names into IP addresses that computers use to identify each other on the Internet. It can also be used to route traffic within an AWS infrastructure.
+
+### BASTION
+In computer networking, a bastion host is a special-purpose computer that is designed to provide secure access to a network from an external network, such as the Internet. It is typically placed on the network's perimeter and is configured to be the only entry point into the network from the outside. The bastion host is hardened and secured to prevent unauthorized access and is often used to provide secure remote access to other internal resources, such as servers or applications. The term "bastion" refers to a fortified structure that is used to defend against attacks.
+
+### SSL
+An SSL (Secure Sockets Layer) certificate is a digital certificate that is used to secure communication between a client and a server. It is used to encrypt data that is transmitted between the two, ensuring that it cannot be intercepted or read by anyone else. SSL certificates are used to secure websites, email servers, and other network services that require secure communication. They are issued by trusted third-party certificate authorities and contain information about the website or service that they are securing, such as the domain name, the company name, and the certificate's expiration date.
+
+### EGRESS-ONLY INTERNET GATEWAY
+An egress-only internet gateway is a type of gateway that is used to provide IPv6-only instances in a VPC with access to the Internet. It is used to allow outbound communication from instances in a private subnet to the Internet, while preventing inbound communication from the Internet to those instances. Egress-only internet gateways are designed to be highly available and can be used with VPCs that have multiple subnets in different Availability Zones. They are used in conjunction with network address translation (NAT) instances or NAT gateways to provide Internet access to instances in a private subnet.
+
+### FLOW LOGS
+VPC flow logs are a feature provided by Amazon Web Services (AWS) that captures information about the IP traffic going to and from network interfaces in a VPC (Virtual Private Cloud). VPC flow logs help administrators troubleshoot connectivity issues, monitor network traffic, and optimize network performance. The logs capture information such as the source and destination IP addresses, the protocol used, the number of packets and bytes transferred, and the start and end times of the connections. The logs can be stored in Amazon S3 buckets, Amazon CloudWatch Logs, or both.
 
 ### private ip ranges:
 Private network cidr ranges
