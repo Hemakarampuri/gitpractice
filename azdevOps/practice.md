@@ -122,3 +122,40 @@ steps:
 ![preview](./Images/az14.png)
 
 #### Nop commerce
+* Manual steps:
+* Nop commerce requires .net7
+```
+sudo apt-get update && \
+sudo apt-get install -y dotnet-sdk-7.0
+git clone
+cd nop commerce
+git checkout master
+dotnet restore src/NopCommerce.sln
+dotnet build src/NopCommerce.sln
+```
+![preview](./Images/az15.png)
+![preview](./Images/az16.png)
+
+##### NOP PIPELINE
+
+* In ec2 install .net7 and add agent then connect.
+* In terminal gitclone nop url,then from there open vs code,create a file for pipelines and write nop pipeline.
+```
+trigger:
+  - master
+
+pool:
+  name: Default
+steps:
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: restore
+      projects: src/NopCommerce.sln
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: build
+      projects: src/NopCommerce.sln
+```
+![preview](./Images/az17.png)
+![preview](./Images/az18.png)
+![preview](./Images/az19.png)
