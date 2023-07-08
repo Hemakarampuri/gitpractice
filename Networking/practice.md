@@ -75,7 +75,7 @@ Private IP address of a system is the IP address that is used to communicate wit
 
 ### CIDR
 Classless Inter-Domain Routing (CIDR) is an IP address allocation method that improves data routing efficiency on the internet. Every machine, server, and end-user device that connects to the internet has a unique number, called an IP address, associated with it.
-* The default CIDR range is 172.31. 0.0/16 .
+* The default CIDR range is 172.31.0.0/16 .
 
 ### SUBNET
 A subnet mask is a 32-bit number created by setting host bits to all 0s and setting network bits to all 1s. In this way, the subnet mask separates the IP address into the network and host addresses. The “255” address is always assigned to a broadcast address, and the “0” address is always assigned to a network address.
@@ -112,6 +112,16 @@ An egress-only internet gateway is a type of gateway that is used to provide IPv
 
 ### FLOW LOGS
 VPC flow logs are a feature provided by Amazon Web Services (AWS) that captures information about the IP traffic going to and from network interfaces in a VPC (Virtual Private Cloud). VPC flow logs help administrators troubleshoot connectivity issues, monitor network traffic, and optimize network performance. The logs capture information such as the source and destination IP addresses, the protocol used, the number of packets and bytes transferred, and the start and end times of the connections. The logs can be stored in Amazon S3 buckets, Amazon CloudWatch Logs, or both.
+
+### OSI LAYERS
+
+* APPLICATION LAYER
+* PRESENTATION LAYER
+* SESSION LAYER
+* TRANSFER LAYER
+* NETWORK LAYER
+* DATA LAYER
+* PHYSICAL LAYER
 
 ### private ip ranges:
 Private network cidr ranges
