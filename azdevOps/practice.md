@@ -160,3 +160,74 @@ steps:
 ![preview](./Images/az18.png)
 ![preview](./Images/az19.png)
 ![preview](./Images/az20.png)
+
+
+### SPRING PETCLINIC PIPELINE
+```
+---
+  trigger:
+    - main
+    
+  pool:
+    name: Azure Pipelines
+    VmImage: ubuntu-22.04
+  steps:
+    - task: Maven@3
+      inputs:
+        mavenPOMFile: 'pom.xml'
+        displayName: Spring Petclinic
+        goals: package
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        testRunTitle: unittests
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.17'
+    - task: CopyPublishBuildArtifacts@1
+      inputs:
+        Contents: '**/target/spring-petclinic*.jar'
+        ArtifactName: $(Build.ArtifactStagingDirectory)
+        ArtifactType: 'Container'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'SPC_Artifact'
+        publishLocation: 'Container'
+```
+![preview](./Images/az22.png)
+![preview](./Images/az23.png)
+![preview](./Images/az24.png)
+![preview](./Images/az25.png)
+ 
+### BUILDING AND PUBLISHING NOP ARTIFACT
+##### PIPELINE
+```
+---
+trigger:
+  - master
+
+stages:
+  - stage: buildstage
+    displayName: Build nop
+    pool:
+      VmImage: ubuntu-22.04
+    jobs:
+      - job: buildjob
+        displayName: build and publish
+        steps:
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: build
+              projects: src/NopCommerce.sln
+          - task: CopyFiles@2
+            inputs: 
+              contents: src/Presentation/Nop.Web/bin/Debug/net7.0/** 
+              targetFolder: '$(Build.ArtifactStagingDirectory)'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: '$(Build.ArtifactStagingDirectory)'
+              artifactName: nopreleaseartifacts
+```
+![preview](./Images/nopbuild.png)
+![preview](./Images/nopbuild1.png)
+![preview](./Images/nopbuild2.png)
+
