@@ -1,5 +1,4 @@
 ---
----
 - name: install Nop Commerce on ubuntu
   hosts: 172.31.11.60
   become: true
