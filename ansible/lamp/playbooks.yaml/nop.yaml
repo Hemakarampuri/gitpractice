@@ -1,6 +1,6 @@
 ---
 name: installing nop commerce
-hosts: all
+hosts: 172.31.11.60
 become: yes
 tasks:
   - name: update packages and install dotnet
