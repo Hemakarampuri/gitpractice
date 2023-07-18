@@ -3,16 +3,16 @@
   hosts: 172.31.11.60
   become: yes
   tasks:
-    - name: update packages and install dotnet
+    - name: update packages and install dotnet 7
       ansible.builtin.apt:
         name: dotnet-sdk-7.0
         state: present
-        update_cache: yes
-    - name: installing url
+        update_cache: true
+    - name: download debian packages
       ansible.builtin.get_url:
         name: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 
         dest: /home/ubuntu/packages-microsoft-prod.deb
-    - name: installing a deb package
+    - name: installing a debian package
       ansible.builtin.apt:
         deb: home/ubuntu/packages-microsoft-prod.deb
     - name: adding user 'nopcommerce' to primary group of 'NopCommerce'
