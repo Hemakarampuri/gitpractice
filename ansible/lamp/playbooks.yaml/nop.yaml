@@ -1,5 +1,5 @@
 ---
-name: installing nop commerce
+name: install NopCommerce
 hosts: 172.31.11.60
 become: yes
 tasks:
@@ -11,10 +11,10 @@ tasks:
   - name: installing url
     ansible.builtin.get_url:
       name: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 
-      dest: /tmp
+      dest: /home/ubuntu/packages-microsoft-prod.deb
   - name: installing a deb package
     ansible.builtin.apt:
-      deb: tmp/packages-microsoft-prod.deb
+      deb: home/ubuntu/packages-microsoft-prod.deb
   - name: adding user 'nopcommerce' to primary group of 'NopCommerce'
     ansible.builtin.user:
       name: nopcommerce
