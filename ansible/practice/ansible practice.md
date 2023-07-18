@@ -57,7 +57,7 @@ sudo apt install ansible -y
 3. Check whether ansible is installed or not by <ansible --version>
 4. Create one more vm named as node1,create user with the same name as in control node 'hema'.edit config file by adding this user to config file and enable password based authentication from no to yes.
 5. Now in the control node generate a key pair < ssh-keygen>
-6. To connect node1  to control node,execute ssh-copy-id @(username)(private ip of node1)
+6. To connect node1  to control node,execute ssh-copy-id (username)@(private ip of node1)
 7. To check whether connected or not run ssh(private ip of node1) you should be able to login to node1 from the control node.
 * Add inventory with file name  < vi hosts> in control node and add ip address of node1. to check the cnnectivity.
 ```
