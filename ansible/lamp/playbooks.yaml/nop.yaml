@@ -1,36 +1,48 @@
 ---
-- name: install NopCommerce
+---
+- name: install Nop Commerce on ubuntu
   hosts: 172.31.11.60
-  become: yes
+  become: true
   tasks:
-    - name: update packages and install dotnet 7
+    - name: download debian packages
+      ansible.builtin.get_url:
+      url: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+      dest: /home/ubuntu
+    - name: install debian package
+      ansible.builtin.apt:
+        deb: /home/ubuntu/packages-microsoft-prod.deb
+    - name: install dotnet 7
       ansible.builtin.apt:
         name: dotnet-sdk-7.0
         state: present
         update_cache: true
-    - name: download debian packages
-      ansible.builtin.get_url:
-        url: https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 
-        dest: /home/ubuntu/packages-microsoft-prod.deb
-    - name: installing a debian package
-      ansible.builtin.apt:
-        deb: home/ubuntu/packages-microsoft-prod.deb
-    - name: adding user 'nopcommerce' to primary group of 'NopCommerce'
+    - name: Add the user nopCommerce with a primary group of nopCommerce
       ansible.builtin.user:
-       name: nopcommerce
-    - name: create a folder if doesn't exist
+        name: nopCommerce
+    - name: Create a directory if it does not exist
       ansible.builtin.file:
         path: /var/www/nopCommerce
         state: directory
-    - name: Download nopCommerce-zip file
+    - name: installing unzip for nop zip file
+      ansible.builtin.apt:
+        name: unzip
+        update_cache: yes
+        state: present
+    - name: download nopCommerce zipfile
       ansible.builtin.get_url:
         url: https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.3/nopCommerce_4.60.3_NoSource_linux_x64.zip
         dest: /var/www/nopCommerce
-    - name: Unzip a file that is already on the remote machine
+    - name: Unzip file nopCommerce zipfile
       ansible.builtin.unarchive:
         src: /var/www/nopCommerce/nopCommerce_4.60.3_NoSource_linux_x64.zip
         dest: /var/www/nopCommerce/
         remote_src: yes
+    - name: Create  bin folder logs folder
+      ansible.builtin.file:
+        path:
+          - /var/www/nopCommerce/bin
+          - /var/www/nopCommerce/logs
+        state: directory
     - name: Change file ownership, group and permissions
       ansible.builtin.file:
         path: /var/www/nopCommerce
@@ -39,12 +51,6 @@
         mode: '0777'
         state: directory
         recurse: true
-    - name: Create two directories bin and logs if it does not exist
-      ansible.builtin.file:
-        path:
-          - /var/www/nopCommerce/bin
-          - /var/www/nopCommerce/logs
-        state: directory
     - name: Copy nop service file to nopcommerce path
       ansible.builtin.copy:
         src: nopCommerce.service
