@@ -35,6 +35,9 @@ Azure Pipelines automatically builds and tests code projects. It supports all ma
 
 * POOL: where do you want to run the job.
 * What is a POM? A Project Object Model or POM is the fundamental unit of work in Maven. It is an XML file that contains information about the project and configuration details used by Maven to build the project. It contains default values for most projects.
+
+#### ARTIFACT: 
+The result of  build is called artifact.Eg: If we build java project, jar file is produced.This jar file is called Artifact. 
 * sample yaml
 ```
 ---
