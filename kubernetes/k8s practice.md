@@ -245,7 +245,7 @@ kubectl delete svc nginx-lb
 * Liveness Probe—indicates if the container is operating. If so, no action is taken.
 ##### FailureThreshold
 Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-##### PnitialDelaySeconds
+##### initialDelaySeconds
 when do you want to start the probe i.e., immediately after container started running or after sometime.
 ##### PeriodSeconds
 How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
