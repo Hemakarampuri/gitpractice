@@ -529,7 +529,6 @@ spec:
       emptyDir:
         sizeLimit: 100Mi
 ```
-
 * ![preview](./Images/k8s46.png)
 #### adding msql env to the spec
 * mysql.env.pod.yaml

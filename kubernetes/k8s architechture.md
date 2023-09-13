@@ -27,15 +27,20 @@ There are three possible container states: Waiting , Running , and Terminated . 
 ### Stateful Applications:
 Stateful applications save data to persistent disk storage for use by the server, by clients, and by other applications. An example of a stateful application is a database or key-value store to which data is saved and retrieved by other applications.
 * If the webserver stores data in a backend manner and uses it to identify the user as an always-connected client, the service is Stateful. 
+
 ### Stateless Applications:
 Stateful applications like the Cassandra, MongoDB and mySQL databases all require some type of persistent storage that will survive service restarts.Stateless applications don’t “store” data.
+
 ### Monolith:
 The word monolith means something that is created or composed in one piece. Similarly, a monolithic architecture suggests a single-tiered application where all different components from a single platform can be combined and used for a single program. In this architecture, there can be different components and services but the application is created and deployed as a single application for all platforms.
+
 ### Microservices
 It is a development technique that uses multiple loosely coupled services and serves as an application. The protocols and services used in this architectures are lightweight and fine-grained. This architecture supports parallel development and allows small autonomous teams to develop different services independently.
+
 ### Desired State:
 The desired state is the state in which you want your application to be running. This state includes all the necessary resources, such as pods, services, and deployments. Kubernetes maintains the desired state by constantly comparing the current state of the system to the desired state and making changes as necessary.
 * For example, suppose you have a deployment that specifies three replicas of your application. If one of the pods crashes, Kubernetes will automatically spin up a new pod to maintain the desired state of three replicas. This process ensures that your application is always running as expected, regardless of the changes that occur in the environment.
+
 Declarative vs Imperative
 ### Pet Vs Cattle:
 In Kubernetes Deployment, we treat our pods like cattle, not like pets. If one of the cattle members gets sick or dies, we can easily replace it by purchasing a new head. Such an action is not noticeable. Similarly, if one pod goes down in deployment, it brings up another one.
