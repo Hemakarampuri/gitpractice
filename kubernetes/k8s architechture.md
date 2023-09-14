@@ -3,16 +3,26 @@
 Kubernetes or k8s is an orchestrator to build, deploy, update, and manage containers. A container is a standard unit of software that packages up code and all dependencies, so the application runs quickly and reliably from one computing environment to another.
 * kubernetes can be described as production grade container management.
 ### Advantages of using kubernetes:-
-1. Zero Downtime Deployment: Kubernetes has promoted zero-downtime updates of deployed models. In other words, the modeling service would not be interrupted by the update and it will continue to process requests without error. Updates are performed in a staged manner to ensure that the application is not impacted.
-2. Auto Scaling: Kubernetes provides auto-scaling features. Meaning that, if there is load on the application, it auto scales as per the configurations set by the admin
-3. Load balancing: A load balancer serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application.
-4. High Availability: Microservices and Kubernetes provide high availability of the system
-5. Container Orchestration: Microservices fully support Container Orchestration and Kubernetes provide a good interface to manage it
-6. Automated Scheduling: We can schedule automated deployments for frequent builds
-7. Fault Tolerance: This feature of Kubernetes help us in any disaster happens with the container, if one container/pod goes down it will automatically create new pod and make it available for the users
-8. Centralized Logging & Monitoring: Kubernetes provides Centralized Logging & Monitoring systems which help us to debug and monitor the issues and warnings
-9. Configuration Management: Centralized Config management helps in managing microservices at one place
-10. Automated Rollouts and rollback: It helps in deployments and rolling back the deployments in case of any problems in deployment.K8s can handle rollout (new version) and roll back (undo new version => previous version)
+##### 1. Zero Downtime Deployment: 
+Kubernetes has promoted zero-downtime updates of deployed models. In other words, the modeling service would not be interrupted by the update and it will continue to process requests without error. Updates are performed in a staged manner to ensure that the application is not impacted.
+##### 2. Auto Scaling: 
+Kubernetes provides auto-scaling features. Meaning that, if there is load on the application, it auto scales as per the configurations set by the admin
+##### 3. Load balancing:
+A load balancer serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application.
+##### 4. High Availability:
+Microservices and Kubernetes provide high availability of the system
+##### 5. Container Orchestration:
+Microservices fully support Container Orchestration and Kubernetes provide a good interface to manage it
+##### 6. Automated Scheduling: 
+We can schedule automated deployments for frequent builds
+##### 7. Fault Tolerance:
+This feature of Kubernetes help us in any disaster happens with the container, if one container/pod goes down it will automatically create new pod and make it available for the users
+##### 8. Centralized Logging & Monitoring:
+Kubernetes provides Centralized Logging & Monitoring systems which help us to debug and monitor the issues and warnings
+##### 9. Configuration Management:
+Centralized Config management helps in managing microservices at one place
+##### 10. Automated Rollouts and rollback:
+It helps in deployments and rolling back the deployments in case of any problems in deployment.K8s can handle rollout (new version) and roll back (undo new version => previous version)
 * It has many options for controlling and managing pods and containers including Deployments, StatefulSets, ReplicaSets, etc. Each of these elements has a distinct purpose, with the common goal of ensuring that pods operate constantly. Just like the other features of k8s, Jobs & Cronjobs are also part of that list.
 ### Distributed System:
 A distributed system is simply a collection of components networked across multiple computers. The components are independent (or at least should be), can fail without impacting other services, and work concurrently.
