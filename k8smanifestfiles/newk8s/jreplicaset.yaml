@@ -10,7 +10,7 @@ spec:
   replicas: 4
   selector:
     matchLabels:
-      app: jenkinshema
+      app: jenkins
       version: v1.1
   template:
     metadata:
