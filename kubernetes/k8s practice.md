@@ -232,6 +232,7 @@ spec:
 ```
 kubectl delete svc nginx-lb
 ```
+
 ### k8s healthchecks:
 * k8s supports 3 kinds of checks:
 #### 1. Liveness probes:
@@ -319,7 +320,6 @@ spec:
                 port: 80
 ```
 ![preview](./Images/k8s43.png)
-
 
 
 ### k8s deployment spec

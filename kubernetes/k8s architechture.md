@@ -126,3 +126,7 @@ Kubernetes tracks the state of each container within a Pod in addition to the ov
 
 ### OSI layers
 ![preview](./Images/OSI-7-layers.jpg)
+
+### SELECTORS
+1.Match expressions: set based selectors
+2.Match labels: Equality based selectors
