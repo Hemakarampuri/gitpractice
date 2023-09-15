@@ -11,9 +11,9 @@ spec:
   minReadySeconds: 10
   selector:
     matchLabels:
-     app: httpd
-    environment: prod
-    release: v1.1.1
+      app: httpd
+      environment: prod
+      release: v1.1.1
   template:
     metadata:
       name: httpd
