@@ -4,10 +4,14 @@ metadata:
   name: supriya
 spec:
   containers:
-    - name: nginx
-      image: nginx
+    - name: jenkins
+      image: jenkins/jenkins
       ports:
-        - containerPort: 80
+        - containerPort: 8080
+          protocol: TCP
+
+
+
 
 
 
