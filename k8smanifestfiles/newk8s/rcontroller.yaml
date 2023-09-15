@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rcontroller
+  labels:
+    app: httpd
+    environment: prod
+    release: v1.1.1
+spec:
+  replicas: 3
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+     app: httpd
+    environment: prod
+    release: v1.1.1
+  template:
+    metadata:
+      name: httpd
+      labels:
+        app: httpd
+    spec:
+      name: httpd
+      image: httpd
+      ports:
+        - containerPort: 8080
+      
