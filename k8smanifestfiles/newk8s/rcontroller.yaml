@@ -10,9 +10,10 @@ spec:
   replicas: 3
   minReadySeconds: 10
   selector:
-    matchLabels:
-      app: httpd
-      release: v1.1.1
+    matchExpressions:
+      - key: app
+        values:
+          - httpd
   template:
     metadata:
       name: rcontroller
