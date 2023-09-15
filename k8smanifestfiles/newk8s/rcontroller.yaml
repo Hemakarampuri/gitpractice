@@ -15,7 +15,7 @@ spec:
       release: v1.1.1
   template:
     metadata:
-      name: httpd
+      name: rcontroller
       labels:
         app: httpd
     spec:
