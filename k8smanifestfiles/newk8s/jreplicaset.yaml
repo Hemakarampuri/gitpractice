@@ -6,11 +6,11 @@ metadata:
     app: jenkins
     environment: dev
 spec:
-  minReadySeconds: 5
+  minReadySeconds: 10
   replicas: 4
   selector:
     matchLabels:
-      app: jenkins
+      app: jenkinshema
       version: v1.1
   template:
     metadata:
