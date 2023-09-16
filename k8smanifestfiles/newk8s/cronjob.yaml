@@ -5,7 +5,7 @@ metadata:
   labels:
     app: batch
 spec:
-  schedule: '2 * * * *'
+  schedule: '*/2 * * * *'
   JobTemplate:
     metadata:
       labels:
