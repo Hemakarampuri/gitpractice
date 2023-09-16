@@ -3,8 +3,7 @@ kind: CronJob
 metadata:
   name: karampuri
   labels:
-    app: nginx
-    version: v1.1
+    app: batch
 spec:
   schedule: '2 * * * *'
   JobTemplate:
