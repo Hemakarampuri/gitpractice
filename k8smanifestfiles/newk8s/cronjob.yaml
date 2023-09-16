@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: karampuri
+  labels:
+    app: nginx
+    version: v1.1
+spec:
+  schedule: '2 * * * *'
+  JobTemplate:
+    metadata:
+      labels:
+        app: batch
+      name: karampuri
+    spec:
+      selector:
+        matchLabels:
+          app: batch
+      backoffLimit: 6
+      template:
+        metadata:
+          labels:
+            app:batch
+          name: karampuri
+        spec:
+          containers:
+            - name: hemacontainer
+              image: alpine
+              command:
+                - sleep
+                - 10s
