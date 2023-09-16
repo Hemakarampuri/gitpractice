@@ -19,7 +19,7 @@ spec:
       template:
         metadata:
           labels:
-            app:batch
+            app: batch
           name: karampuri
         spec:
           containers:
