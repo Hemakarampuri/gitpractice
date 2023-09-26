@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: karampuri
   labels:
-    app: batch
+    purpose: cronjob
 spec:
   schedule: '*/2 * * * *'
   JobTemplate:
@@ -27,4 +27,4 @@ spec:
               image: alpine
               command:
                 - sleep
-                - 10s
+                - 1d
