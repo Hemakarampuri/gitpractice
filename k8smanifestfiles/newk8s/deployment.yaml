@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: nginx-deploy
 spec:
-  replicas: 5
+  replicas: 6
   minReadySeconds: 2
   paused: true
   selector:
