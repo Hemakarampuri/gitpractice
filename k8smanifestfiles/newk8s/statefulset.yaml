@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db
+  labels:
+    app: dbms
+spec:
+  minReadySeconds: 5
+  replicas: 3
+  template:
+    metadata:
+      name: db
+    spec:
+      - containers:
+        name: db
+        containerPort: 8080
+          name:
+          protocol:
