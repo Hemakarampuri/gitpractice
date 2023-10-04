@@ -5,8 +5,8 @@ metadata:
   labels:
     app: nginx
     purpose: svcdemo
-    replicas: 3
 spec:
+  replicas: 3
   minReadySeconds: 1
   selector:
     matchLabels:
